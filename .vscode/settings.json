@@ -1,0 +1,14 @@
+{
+    "editor.fontSize": 16,
+    "editor.fontFamily": "Consolas, 'Courier New', monospace",
+    "editor.tabSize": 5,
+    "editor.multiCursorModifier": "ctrlCmd",
+    "editor.wordWrap": "on",
+    "files.exclude": {
+        "**/.git": false,
+        "**/.svn": false,
+        "**/.hg": false,
+        "**/CVS": false,
+        "**/.DS_Store": false
+    }
+}

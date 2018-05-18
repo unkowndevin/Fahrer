@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/css/materialize.min.css">
+  <title>Creando la API</title>
+</head>
+<body>
+  <div class="container">
+    <!-- Tap Target Structure -->
+    <div class="tap-target" data-target="menu">
+      <div class="tap-target-content">
+        <h5>Title</h5>
+        <p>A bunch of text</p>
+      </div>
+    </div>
+    <br>
+    <h5 id="mensaje"></h5>
+    <div class="row">
+      <div class="teal-text col s12" id="mensaje-sesion"></div>
+    </div>
+    <div class="row">
+      <div class="col s6" id="contenerdor">
+        <form id="formi">
+          <div class="input-field col s12">
+            <input type="email" class="teal-text text-darken-1" id="email">
+            <label for="email">Email</label>
+          </div>
+          <div class="input-field col s12"><input type="text" id="nick_name" class="teal-text text-darken-1"><label for="nick_name">NickName</label></div>
+          <div class="input-field col s12">
+            <input type="password" class="teal-text text-darken-1" id="password">
+            <label for="password">Password</label>
+          </div>
+          <div class="input-field col s12">
+            <input type="text" class="teal-text text-darken-1" id="genre">
+            <label for="genre">Genre</label>
+          </div>
+          <div class="input-field col s12">
+            <input type="text" class="teal-text text-darken-1" id="place">
+            <label for="place">Place</label>
+          </div>
+          <div class="container">
+              <a id="menu" onclick="$('.tap-target').featureDiscovery('open')" class="waves-effect waves-light btn btn-floating" ><i class="material-icons">menu</i></a>
+          </div>
+          <div class="input-field col s12">
+            <input type="text" class="teal-text text-darken-1" id="name">
+            <label for="name">Name</label>
+          </div>
+          <div class="input-field col s12">
+            <input type="text" class="teal-text text-darken-1" id="last_name">
+            <label for="last_name">Last Name</label>
+          </div>
+          <div class="input-field col s12">
+            <input type="number" class="teal-text text-darken-1" id="privilege">
+            <label for="privilege">Privilege</label>
+          </div>
+          <div class="input-field col s12"><input type="date" class="blue-text text-darken-1" id="birth_date"></div>
+          <div class="input-field col s12 right-align">
+            <button class="btn teal darken-1 waves-effect waves-light" id="enviar" type="submit">
+              ENVIAR
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="row">
+      <div class="teal-text col s12" id="mensaje-registro"></div>
+    </div>
+    <div class="row">
+      <div class="col s12">
+        <button class="btn teal darken-1 waves-effect waves-light" id="todos">Obtener todos los usuarios</button>
+        <p class="teal-text" id="usuarios"></p>
+      </div>
+    </div>
+    <div class="row">
+      <form id="eliminar">
+        <div class="input-field col s12"><input type="text" id="id_del" class="teal-text text-darken-1"><label for="nick_name">ID</label></div>
+        <div class="input-field col s12 right-align">
+          <button class="btn teal darken-1 waves-effect waves-light" id="elimina" type="submit">
+            ENVIAR
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="row">
+      <div class="col s12 teal-text text-darken-1" id="eliminado"></div>
+    </div>
+    <div class="row">
+      <div class="col s6">
+        <form id="actualizar" onsubmit="return false">
+          <div class="input-field col s12">
+            <input type="email" class="teal-text text-darken-1" id="email_update">
+            <label for="email">Email</label>
+          </div>
+          <div class="input-field col s12"><input type="text" id="nick_name_update" class="teal-text text-darken-1"><label for="nick_name">NickName</label></div>
+          <div class="input-field col s12">
+            <input type="password" class="teal-text text-darken-1" id="password_update">
+            <label for="password">Password</label>
+          </div>
+          <div class="input-field col s12 right-align">
+            <button class="btn teal darken-1 waves-effect waves-light" id="enviar_update" type="submit">
+              ENVIAR
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12 teal-text text-darken-1" id="mensaje-actualizacion"></div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <button class="btn teal darken-1 waves-effect waves-light" id="perfil" type="button">
+          PERFIL
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12 teal-text text-darken-1 text-flow" id="mensaje-perfil"></div>
+    </div>
+    <div class="row">
+      <div class="col s6">
+        <form id="login">
+          <div class="input-field col s12">
+            <input type="email" class="teal-text text-darken-1" id="email_login">
+            <label for="email">Email</label>
+          </div>
+          <div class="input-field col s12">
+            <input type="password" class="teal-text text-darken-1" id="password_login">
+            <label for="password">Password</label>
+          </div>
+          <div class="input-field col s12 right-align">
+            <button class="btn teal darken-1 waves-effect waves-light" id="enviar_login" type="submit">
+              ENVIAR
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="row">
+      <div class="teal-text col s12" id="mensaje-login"></div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12 right-align">
+        <button class="btn teal darken-1 waves-effect waves-light" id="logout" type="submit">
+          Cerrar Sesion
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12 teal-text text-darken-1 text-flow" id="mensaje-logout"></div>
+    </div>
+    <div class="row">
+      <div class="col s6">
+        <form id="change_password">
+          <div class="input-field col s12">
+            <input type="password" class="teal-text text-darken-1" id="old_password_change">
+            <label for="old_password_change">Old Password</label>
+          </div>
+          <div class="input-field col s12">
+            <input type="password" class="teal-text text-darken-1" id="new_password_change">
+            <label for="new_password_change">New Password</label>
+          </div>
+          <div class="input-field col s12 right-align">
+            <button class="btn teal darken-1 waves-effect waves-light" id="enviar_change" type="submit">
+              ENVIAR
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="row">
+      <div class="teal-text col s12" id="mensaje-change-password"></div>
+    </div>
+    <div class="row">
+      <div class="col s6">
+        <form id="save_place">
+          <div class="col s12 teal-text text-darken-1">Registrar Pais</div>
+          <div class="input-field col s12">
+            <input type="text" class="teal-text text-darken-1" id="place_name">
+            <label for="place_name">Name</label>
+          </div>
+          <div class="input-field col s12">
+            <input type="text" class="teal-text text-darken-1" id="abbr_place">
+            <label for="abbr_place">Abbreviation</label>
+          </div>
+          <div class="input-field col s12 right-align">
+            <button class="btn teal darken-1 waves-effect waves-light" id="enviar_plave" type="submit">
+              ENVIAR
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="row">
+      <div class="teal-text col s12" id="mensaje-place"></div>
+    </div>
+
+  </div>
+
+  <div class="container">
+    <div class="input-field col s12">
+      <input type="email" class="teal-text text-darken-1" id="message">
+      <label for="message">M  essage</label>
+    </div>
+    <div class="input-field col s12 right-align">
+      <button class="btn teal darken-1 waves-effect waves-light" id="dialogflow_button" type="button">
+        Consultar
+      </button>
+    </div>
+    <div id="dialogflow_response"></div>
+  </div>
+
+  <!-- Librerias y frameworks -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/js/materialize.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $(document).ready(function(){
+        $('.tap-target').featureDiscovery();
+      });
+       
+      $("#usuarios").text("Cargando usuarios . . .");
+      $.get("/undevin///usuarios", function(data){
+        $("#usuarios").text(JSON.stringify(data.rs));
+      });
+      $("#mensaje-sesion").text("Revisando sesion . . .");
+      $.get("/undevin///sesion", function(data){
+        $("#mensaje-sesion").text(JSON.stringify(data.message));
+      });
+      $("#formi").submit(function(){
+        $("#mensaje-registro").text("Registrando usuario . . .");
+        $.post("/undevin///registrar", { email : $('#email').val(), nick_name:  $("#nick_name").val(), password : $('#password').val(), genre : $("#genre").val(), place: $("#place").val(), birth_date: $("#birth_date").val(), privilege : $("#privilege").val(), name : $("#name").val(), last_name : $("#last_name").val()}, function(data){
+          $("#mensaje-registro").text(JSON.stringify(data.message));
+        });
+        return false;
+      });
+      $("#todos").click(function(){
+        $("#usuarios").text("Cargando usuarios . . .");
+        $.get("/undevin///usuarios", function(data){
+          $("#usuarios").text(JSON.stringify(data.rs));
+        })
+      });
+      $("#eliminar").submit(function(){
+        $("#eliminado").text("Eliminando usuario . . .");
+        $.post("/undevin///eliminar",  { id: $("#id_del").val() }, function(data){
+          $("#eliminado").text(data.message);
+        })
+        return false;
+      })
+      $("#actualizar").submit(function(){
+        $("#mensaje-actualizacion").text("Actualizando datos . . .");
+        $.post("/undevin///actualizar", {
+          email : $('#email_update').val(),
+          nick_name:  $("#nick_name_update").val(),
+          password : $('#password_update').val()
+        }, function(data){
+          $("#mensaje-actualizacion").text(data.message);
+        });
+        return false;
+      });
+      $("#perfil").click(function(){
+        $("#mensaje-perfil").text("Obteniendo informacion . . .");
+        $.get("/undevin///perfil", function(data){
+          $("#mensaje-perfil").text(JSON.stringify(data.message));
+        })
+      });
+      $("#login").submit(function(){
+        $("#mensaje-login").text("Autenticando usuario . . .");
+        $.post("/undevin///login", { email : $('#email_login').val(), password : $('#password_login').val()}, function(data){
+          $("#mensaje-login").text(data.message);
+        });
+        return false;
+      });
+      $("#logout").click(function(){
+        $("#mensaje-logout").text("Cerrando sesion . . .");
+        $.get("/undevin///logout", function(data){
+          $("#mensaje-logout").text(data.message);
+        });
+      });
+      $("#change_password").submit(function(){
+        $("#mensaje-change-password").text("Cambiando contraseña . . .");
+        $.post("/undevin///password", { oldPassword: $("#old_password_change").val(), newPassword: $("#new_password_change").val() }, function(data){
+          $("#mensaje-change-password").text(JSON.stringify(data.message));
+        });
+        return false;
+      });
+      $("#save_place").submit(function(){
+        console.log("Enviar pais");
+        $("#mensaje-place").text("Registrando mensaje . . .");
+        $.post("/undevin///pais", { abbr: $("#abbr_place").val(), name: $("#place_name").val() }, function(data){
+          $("#mensaje-place").text(data.message);
+        });
+        return false;
+      });
+    });
+  </script>
+
+  <script>
+    $(document).ready(function(){
+      $("#dialogflow_button").click((e) => {
+        $.post("/undevin///diagnostic", 
+        {message: $("#message").val()}, function(data){
+          $('#dialogflow_response').text(JSON.stringify(data));
+        });
+      });
+    });
+  </script>
+</body>
+</html>
