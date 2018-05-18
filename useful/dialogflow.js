@@ -55,7 +55,12 @@ class DialogFlow {
       diagnostic.end = timestamp : delete diagnostic.end
     
     if(intent[0] == "diagnostic" && intent[2] == "persistence"){
-      let date = new Date(params["date"] || params["date-period"] || "")
+      let date;
+      if(params["date"] || params["date-period"]){
+        date = new Date(params["date"] || params["date-period"])
+      }else {
+        date = null
+      }
       let severity = 0
       let note = ""
       switch(intent[1]){

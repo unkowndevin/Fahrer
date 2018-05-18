@@ -248,10 +248,10 @@ class Enrutador{
       if(!rq.session.results){
         rq.session.results = {
           begin: new Date(),
-          end: new Date(),
+          end: null,
           finalDuration: 0.0,
           persistence: {
-            estimated: new Date(),
+            estimated: null,
             received: "",
             note: ""
           },
@@ -265,7 +265,7 @@ class Enrutador{
             medium: 0,
             high: 0
           },
-          conclusions: {}
+          conclusions: ""
         }
       }
 
@@ -295,7 +295,8 @@ class Enrutador{
 
         rs.json({
           status: 200,
-          speech: response.speech
+          speech: response.speech,
+          end: response.end
         })
 
       }).catch(err => {
@@ -306,12 +307,19 @@ class Enrutador{
 
     });
 
-    this.router.post(`${route}/results`, (rq, rs) =>{
+    this.router.get(`${route}/results`, (rq, rs) =>{
 
-      rs.json({
-        status: 200,
-        results: rq.session.results
-      })
+      if(rq.session.results){
+        rs.json({
+          status: 200,
+          results: rq.session.results
+        })
+      }else{
+        rs.json({
+          status: 505,
+          results: "No hay resultados que mostrar"
+        })
+      }
 
     });
 
